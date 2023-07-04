@@ -13,6 +13,10 @@ use_stderr = False
 
 my_ip = {{ api_interface_address }}
 
+state_path = /var/lib/cinder
+lock_path = /var/lock/cinder
+volumes_dir = /var/lib/cinder/volumes
+
 osapi_volume_workers = {{ openstack_service_workers }}
 volume_name_template = volume-%s
 
@@ -127,6 +131,7 @@ lock_path = /var/lib/cinder/tmp
 
 {% if enable_cinder_backend_lvm | bool %}
 [lvm-1]
+lvm_type = thin
 volume_group = {{ cinder_volume_group }}
 volume_driver = cinder.volume.drivers.lvm.LVMVolumeDriver
 volume_backend_name = lvm-1
