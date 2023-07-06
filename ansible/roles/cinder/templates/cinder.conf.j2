@@ -128,7 +128,6 @@ lock_path = /var/lib/cinder/tmp
 {% if enable_cinder_backend_lvm | bool %}
 [lvm-1]
 lvm_type = thin
-volumes_dir = /var/lib/cinder/volumes
 volume_group = {{ cinder_volume_group }}
 volume_driver = cinder.volume.drivers.lvm.LVMVolumeDriver
 volume_backend_name = lvm-1
